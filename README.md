@@ -1,1 +1,2 @@
 # zabbix-agent-claymore
+wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+xenial_all.deb && dpkg -i zabbix-release_4.0-3+xenial_all.deb && apt update && apt install zabbix-agent && rigName=`cat /home/miner/config.json | jq -r .rigName | sed -e 's/^null$/n\/a/'` && sed -i "/^Server=/c\Server=xx.xx.xx.xx" /etc/zabbix/zabbix_agentd.conf && sed -i "/^ServerActive=/c\ServerActive=xx.xx.xx.xx" /etc/zabbix/zabbix_agentd.conf && sed -i "/^Hostname=/c\Hostname=$rigName" /etc/zabbix/zabbix_agentd.conf && systemctl restart zabbix-agent
